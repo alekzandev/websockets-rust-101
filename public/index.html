@@ -4,67 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chatbot Interface</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-    .chat-container {
-      width: 500px;
-      margin: 50px auto;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      height: 600px;
-    }
-    .chat-header {
-      background-color: #4CAF50;
-      padding: 10px;
-      color: #fff;
-      text-align: center;
-      font-size: 1.2em;
-    }
-    .chat-messages {
-      flex: 1;
-      padding: 10px;
-      overflow-y: auto;
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-    }
-    .chat-input {
-      display: flex;
-    }
-    .chat-input input {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      outline: none;
-      font-size: 1em;
-    }
-    .chat-input button {
-      padding: 10px 20px;
-      border: none;
-      background-color: #4CAF50;
-      color: #fff;
-      font-size: 1em;
-      cursor: pointer;
-    }
-    .message {
-      margin-bottom: 10px;
-      line-height: 1.4;
-    }
-    .message.you {
-      text-align: right;
-      color: #333;
-    }
-    .message.bot {
-      text-align: left;
-      color: #555;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="chat-container">
@@ -81,50 +21,6 @@
       <button id="send-button">Send</button>
     </div>
   </div>
-
-  <script>
-    // Create a WebSocket connection (adjust the URL to match your Rust WebSocket server)
-    const ws = new WebSocket('ws://localhost:8080');
-
-    const chatMessages = document.getElementById('chat-messages');
-    const messageInput = document.getElementById('message-input');
-    const sendButton = document.getElementById('send-button');
-
-    // Log when connection is established
-    ws.onopen = () => {
-      console.log('WebSocket connection established');
-    };
-
-    // Handle incoming messages from the server
-    ws.onmessage = (event) => {
-      appendMessage('bot', event.data);
-    };
-
-    // Append a message to the chat area
-    function appendMessage(sender, text) {
-      const messageElem = document.createElement('div');
-      messageElem.classList.add('message', sender);
-      messageElem.textContent = sender === 'you' ? 'You: ' + text : 'Bot: ' + text;
-      chatMessages.appendChild(messageElem);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    // Send a message when the button is clicked or enter is pressed
-    function sendMessage() {
-      const message = messageInput.value.trim();
-      if (message !== '') {
-        ws.send(message);
-        appendMessage('you', message);
-        messageInput.value = '';
-      }
-    }
-
-    sendButton.addEventListener('click', sendMessage);
-    messageInput.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') {
-        sendMessage();
-      }
-    });
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
