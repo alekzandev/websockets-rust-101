@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-time SQL Collaboration Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1>Real-time SQL Collaboration</h1>
+
+<div class="container">
+    <div class="panel editor-panel">
+        <div id="status" class="status">Connecting...</div>
+
+        <div class="query-templates">
+            <button class="template" onclick="loadTemplate('basic')">Basic Query</button>
+            <button class="template" onclick="loadTemplate('aggregate')">Aggregation</button>
+            <button class="template" onclick="loadTemplate('chart')">Chart Data</button>
+        </div>
+
+        <textarea id="query" rows="6">SELECT * FROM tracks LIMIT 5;</textarea>
+        <button onclick="sendQuery()">Execute Query ⚡</button>
+
+        <h3>Results:</h3>
+        <pre id="results"></pre>
+    </div>
+
+    <div class="panel visualization-panel">
+        <h3>Data Visualization</h3>
+        <div class="chart-container">
+            <canvas id="chartArea"></canvas>
+        </div>
+    </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

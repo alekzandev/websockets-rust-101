@@ -1,0 +1,92 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.panel {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.editor-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+#query {
+    font-family: 'Monaco', 'Consolas', monospace;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.visualization {
+    min-height: 300px;
+}
+
+.status {
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.status.connected {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.status.disconnected {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.query-templates {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    background: #2196f3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #1976d2;
+}
+
+button.template {
+    background: #90caf9;
+}
+
+#results {
+    font-family: 'Monaco', 'Consolas', monospace;
+    white-space: pre;
+    overflow-x: auto;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+}
